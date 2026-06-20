@@ -1,0 +1,33 @@
+import random
+import time
+
+score = 0
+answer = random.randint(1, 100)
+
+start_time = time.time()
+
+while True:
+    
+    try:
+        guess = input("Guess the number between 1 and 100: ")
+        guess = int(guess)
+    except ValueError:
+        print("Please enter a valid number!")
+        continue
+
+    if guess > answer:
+        print("Too high!")
+        score += 1
+    elif guess < answer:
+        print("Too low!")
+        score += 1
+    else:
+        score += 1
+        print("You got it!")
+        
+        end_time = time.time()
+        time_elapsed = end_time - start_time
+        
+        print("Your number of tries is: " + str(score))
+        print("Time elapsed: " + str(round(time_elapsed, 1)) + " seconds")
+        break
